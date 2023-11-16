@@ -1,0 +1,34 @@
+# Create a hypothetical air quality dataset
+set.seed(123)  # Set seed for reproducibility
+air_quality_data <- data.frame(
+  Ozone = rnorm(100, mean = 50, sd = 20),
+  Solar_Radiation = rnorm(100, mean = 200, sd = 50),
+  Wind_Speed = rnorm(100, mean = 10, sd = 5),
+  Temperature = rnorm(100, mean = 25, sd = 5)
+)
+
+# Display summary statistics
+summary(air_quality_data)
+# Load the reshape2 package
+library(reshape2)
+
+# Melt the airquality dataset
+melted_data <- melt(airquality)
+
+# Display the melted data
+print(melted_data)
+# Melt the airquality dataset with specific ID variables
+melted_data_specific <- melt(airquality, id.vars = c("Month", "Day"))
+
+# Display the melted data with specific ID variables
+print(melted_data_specific)
+# Cast the melted data back to wide format
+cast_data <- dcast(melted_data_specific, Month + Day ~ variable)
+
+# Display the casted data
+print(cast_data)
+# Cast the melted data and compute the average per month
+average_data <- dcast(melted_data_specific, Month ~ variable, fun.aggregate = mean)
+
+# Display the average data per month
+print(average_data)
