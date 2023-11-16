@@ -1,15 +1,13 @@
-1)a)
-# Creating a hypothetical dataset
+
 chicken_data <- data.frame(
   Weight = c(150, 160, 155, 170, 180, 175, 165, 185, 190, 200),
   Time = c(1, 2, 3, 4, 1, 2, 3, 4, 1, 2),
   Diet = c(1, 2, 1, 2, 1, 2, 1, 2, 1, 2)
 )
 
-# Fit a multiple regression model
+
 model <- lm(Weight ~ Time + Diet, data = chicken_data)
 
-# Print a summary of the regression model
 summary(model)
 
 b)
@@ -17,12 +15,10 @@ summary(model)
 new_data <- data.frame(Time = 10, Diet = 1)
 predicted_weight <- predict(model, newdata = new_data)
 
-# Display the predicted weight
 cat("Predicted Weight for Time=10 and Diet=1:", predicted_weight, "\n")
 
 c)
-# Calculate the residuals (errors) for the entire dataset
+ 
 residuals <- residuals(model)
 
-# Display the residuals for the specified prediction
 cat("Residual (Error) for Time=10 and Diet=1:", residuals[length(residuals)], "\n")
