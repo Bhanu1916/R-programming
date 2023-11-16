@@ -1,0 +1,5 @@
+# Create data for the array
+data <- array(1:24, dim = c(3, 4, 2))
+
+# Display the content of the array
+print(data)
