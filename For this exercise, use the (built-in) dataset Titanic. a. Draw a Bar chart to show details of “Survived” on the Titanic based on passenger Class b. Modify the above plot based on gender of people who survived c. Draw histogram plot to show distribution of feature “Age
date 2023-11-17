@@ -1,0 +1,27 @@
+# Load the Titanic dataset
+data("Titanic")
+
+# Convert the table to a data frame
+titanic_df <- as.data.frame(Titanic)
+
+# Load required library for plotting
+library(ggplot2)
+
+# a. Draw a Bar chart to show details of "Survived" on the Titanic based on passenger Class
+ggplot(titanic_df, aes(x = Class, fill = factor(Survived))) +
+  geom_bar(position = "dodge", stat = "count") +
+  labs(title = "Survival on the Titanic by Passenger Class", x = "Passenger Class", y = "Count") +
+  scale_fill_manual(values = c("0" = "red", "1" = "green"))  # Customizing colors
+
+# b. Modify the above plot based on the gender of people who survived
+ggplot(titanic_df, aes(x = Class, fill = factor(Survived), color = factor(Gender))) +
+  geom_bar(position = "dodge", stat = "count") +
+  labs(title = "Survival on the Titanic by Passenger Class and Gender", x = "Passenger Class", y = "Count") +
+  scale_fill_manual(values = c("0" = "red", "1" = "green")) +  # Customizing colors
+  scale_color_manual(values = c("male" = "blue", "female" = "pink"))  # Customizing colors
+
+# c. Draw a histogram plot to show the distribution of the feature "Age"
+ggplot(titanic_df, aes(x = Age, fill = factor(Survived))) +
+  geom_histogram(position = "identity", bins = 30, alpha = 0.7) +
+  labs(title = "Distribution of Age on the Titanic", x = "Age", y = "Count") +
+  scale_fill_manual(values = c("0" = "red", "1" = "green"))  # Customizing colors
