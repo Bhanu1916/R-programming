@@ -1,0 +1,17 @@
+# Set seed for reproducibility
+set.seed(123)
+
+# Create a random sample from the LETTERS vector
+sample_letters <- sample(LETTERS, 100, replace = TRUE)
+
+# Convert the sample to a factor
+factor_letters <- as.factor(sample_letters)
+
+# Extract five levels of the factor
+selected_levels <- levels(factor_letters)[1:5]
+
+# Print the result
+print("Original Sample:")
+print(sample_letters)
+print("\nFactor with Five Levels:")
+print(selected_levels)
