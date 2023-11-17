@@ -1,0 +1,41 @@
+# Load the USArrests dataset
+data("USArrests")
+
+# (i)
+# a. Explore the summary of the dataset
+print("Summary of the USArrests dataset:")
+print(summary(USArrests))
+
+# b. Print the statistical features of the data
+print("Statistical features of the USArrests dataset:")
+print(sapply(USArrests, function(x) c(Mean = mean(x), SD = sd(x), Median = median(x), Min = min(x), Max = max(x))))
+
+# c. Print the state which saw the largest total number of rape
+state_largest_rape <- rownames(USArrests)[which.max(USArrests$Rape)]
+print("State with the largest total number of rape:")
+print(state_largest_rape)
+
+# d. Print the states with the max & min crime rates for murder
+max_murder_state <- rownames(USArrests)[which.max(USArrests$Murder)]
+min_murder_state <- rownames(USArrests)[which.min(USArrests$Murder)]
+
+print("State with the max crime rate for murder:")
+print(max_murder_state)
+print("State with the min crime rate for murder:")
+print(min_murder_state)
+
+# (ii)
+# a. Find the correlation among the features
+correlation_matrix <- cor(USArrests)
+print("Correlation among the features:")
+print(correlation_matrix)
+
+# b. Print the states which have assault arrests more than the median of the country
+assault_above_median <- rownames(USArrests)[USArrests$Assault > median(USArrests$Assault)]
+print("States with assault arrests more than the median:")
+print(assault_above_median)
+
+# c. Print the states in the bottom 25% of murder
+bottom_25_percent_murder <- rownames(USArrests)[USArrests$Murder < quantile(USArrests$Murder, 0.25)]
+print("States in the bottom 25% of murder:")
+print(bottom_25_percent_murder)
