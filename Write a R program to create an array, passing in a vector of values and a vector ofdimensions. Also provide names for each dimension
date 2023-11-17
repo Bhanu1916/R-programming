@@ -1,0 +1,14 @@
+# Vector of values
+values <- c(1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12)
+
+# Vector of dimensions
+dimensions <- c(2, 3, 2)  # Change the dimensions according to your requirement
+
+# Names for each dimension
+dim_names <- list(c("Row1", "Row2"), c("Col1", "Col2", "Col3"), c("Depth1", "Depth2"))
+
+# Create an array
+my_array <- array(values, dim = dimensions, dimnames = dim_names)
+
+# Print the array
+print(my_array)
