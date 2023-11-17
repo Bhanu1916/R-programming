@@ -1,0 +1,37 @@
+# Load required libraries
+library(dplyr)
+library(reshape2)
+
+# Load the ChickWeight dataset
+data("ChickWeight")
+
+# (i) Order the data frame in ascending order by feature name "weight" grouped by feature "diet"
+ordered_df <- ChickWeight %>%
+  arrange(diet, weight) %>%
+  group_by(diet) %>%
+  slice_tail(n = 6)
+
+# Extracted last 6 records from the ordered data frame
+print("(i) Extracted last 6 records from the ordered data frame:")
+print(ordered_df)
+
+# (ii) a. Perform melting function based on "Chick", "Time", "Diet" features as ID variables
+melted_df <- melt(ChickWeight, id.vars = c("Chick", "Time", "Diet"))
+
+# Display the melted data frame
+print("(ii) a. Melted data frame:")
+print(melted_df)
+
+# (ii) b. Perform cast function to display the mean value of weight grouped by Diet
+cast_mean_df <- dcast(melted_df, Diet ~ variable, mean)
+
+# Display the mean value of weight grouped by Diet
+print("(ii) b. Mean value of weight grouped by Diet:")
+print(cast_mean_df)
+
+# (ii) c. Perform cast function to display the mode of weight grouped by Diet
+cast_mode_df <- dcast(melted_df, Diet ~ variable, mode)
+
+# Display the mode of weight grouped by Diet
+print("(ii) c. Mode of weight grouped by Diet:")
+print(cast_mode_df)
