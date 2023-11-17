@@ -1,0 +1,29 @@
+exam_data_subset <- exam_data[c(3, 5), c(1, 3)]
+print(exam_data_subset)
+b. Adding a new column named "country":
+
+R
+Copy code
+exam_data$country <- c("USA", "USA", "USA", "USA", "UK", "USA", "USA", "India", "USA", "USA")
+print(exam_data)
+c. Adding new row(s) to an existing data frame:
+
+R
+Copy code
+new_exam_data <- data.frame(name = c('Robert', 'Sophia'), score = c(10.5, 9), attempts = c(1, 3), qualify = c('yes', 'no'))
+exam_data <- rbind(exam_data, new_exam_data)
+print(exam_data)
+d. Sorting a given data frame by name and score:
+
+R
+Copy code
+sorted_exam_data <- exam_data[order(exam_data$name, exam_data$score), ]
+print(sorted_exam_data)
+e. Saving the information of a data frame in a file and displaying the information of the file:
+
+R
+Copy code
+write.table(exam_data, "exam_data_file.txt", sep = "\t", row.names = FALSE)
+# Displaying information from the file
+read_file <- read.table("exam_data_file.txt", header = TRUE, sep = "\t")
+print(read_file)
