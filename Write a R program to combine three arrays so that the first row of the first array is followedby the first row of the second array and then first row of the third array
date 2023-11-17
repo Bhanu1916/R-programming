@@ -1,0 +1,17 @@
+# Create three example arrays
+array1 <- matrix(1:4, ncol = 2)
+array2 <- matrix(5:8, ncol = 2)
+array3 <- matrix(9:12, ncol = 2)
+
+# Combine arrays row-wise
+combined_array <- rbind(array1, array2, array3)
+
+# Print the result
+print("Array 1:")
+print(array1)
+print("Array 2:")
+print(array2)
+print("Array 3:")
+print(array3)
+print("Combined Array:")
+print(combined_array)
